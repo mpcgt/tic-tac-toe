@@ -50,6 +50,10 @@ const ResetGame = () => {
 }
 </script>
 
-<template></template>
+<template>
+  <main class="pt-8 text-center">
+    <h1 class="mb-8 text-3xl font-bold uppercase">Tic Tac Toe</h1>
+  </main>
+</template>
 
 <style></style>
