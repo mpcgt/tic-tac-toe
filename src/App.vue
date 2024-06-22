@@ -1,6 +1,5 @@
 <script setup>
 import { ref, computed } from "vue";
-import "./src/style.css"
 
 const player = ref("X");
 const board = ref([
@@ -81,4 +80,10 @@ const ResetGame = () => {
   </main>
 </template>
 
-<style></style>
+<style>
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+}
+</style>
