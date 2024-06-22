@@ -1,12 +1,12 @@
 <script setup>
-import { ref, computed } from 'vue'
+import { ref, computed } from "vue";
 
-const player = ref('X')
+const player = ref("X");
 const board = ref([
-  ['', '', ''],
-  ['', '', ''],
-  ['', '', ''],
-])
+  ["", "", ""],
+  ["", "", ""],
+  ["", "", ""],
+]);
 
 const CalculateWinner = (squares) => {
   const lines = [
@@ -17,7 +17,7 @@ const CalculateWinner = (squares) => {
     [1, 4, 7],
     [2, 5, 8],
     [0, 4, 8],
-    [2, 4, 6]
+    [2, 4, 6],
   ];
   for (let i = 0; i < lines.length; i++) {
     const [a, b, c] = lines[i];
@@ -26,28 +26,28 @@ const CalculateWinner = (squares) => {
     }
   }
   return null;
-}
+};
 
-const winner = computed(() => CalculateWinner(board.value.flat()))
+const winner = computed(() => CalculateWinner(board.value.flat()));
 
 const MakeMove = (x, y) => {
-  if (winner.value) return
+  if (winner.value) return;
 
-  if (board.value[x][y] !== '') return
+  if (board.value[x][y] !== "") return;
 
-  board.value[x][y] = player.value
+  board.value[x][y] = player.value;
 
-  player.value = player.value === 'X' ? 'O' : 'X'
-}
+  player.value = player.value === "X" ? "O" : "X";
+};
 
 const ResetGame = () => {
   board.value = [
-    ['', '', ''],
-    ['', '', ''],
-    ['', '', ''],
-  ]
-  let player = 'X'
-}
+    ["", "", ""],
+    ["", "", ""],
+    ["", "", ""],
+  ];
+  let player = "X";
+};
 </script>
 
 <template>
@@ -56,12 +56,27 @@ const ResetGame = () => {
     <h3 class="text-xl mb-4">C'est à {{ player }} de jouer</h3>
     <div class="flex flex-col items-center mb-8">
       <div v-for="(row, x) in board" :key="x" class="flex">
-        <div v-for="(cell, y) in row" :key="y" @click="MakeMove(x,y)" :class="`border border-white w-20 h-20 hover:bg-gray-700 flex items-center justify-center material-icons-outlined text-4xl cursor-pointer`">
-          {{  cell === 'X' ? 'close' : cell === 'O' ? 'circle' : '' }}
+        <div
+          v-for="(cell, y) in row"
+          :key="y"
+          @click="MakeMove(x, y)"
+          :class="`border border-white w-20 h-20 hover:bg-gray-700 flex items-center justify-center material-icons-outlined text-4xl cursor-pointer ${
+            cell === 'X' ? 'text-purple-500' : 'text-blue-400'
+          } `"
+        >
+          {{ cell === "X" ? "close" : cell === "O" ? "circle" : "" }}
         </div>
       </div>
     </div>
-    <h2 v-if="winner" class="text-6xl font-bold mb-8">{{ winner }} a gagné !</h2>
+    <h2 v-if="winner" class="text-6xl font-bold mb-8">
+      {{ winner }} a gagné !
+    </h2>
+    <button
+      @click="ResetGame"
+      class="px-4 py-2 bg-purple-500 rounded uppercase font-bolg hover:bg-purple-600 duration-300"
+    >
+      Réinitialiser
+    </button>
   </main>
 </template>
 
