@@ -34,6 +34,10 @@ const MakeMove = (x, y) => {
   if (winner.value) return
 
   if (board.value[x][y] !== '') return
+
+  board.value[x][y] = player.value
+
+  player.value = player.value === 'X' ? 'O' : 'X'
 }
 
 
