@@ -61,6 +61,7 @@ const ResetGame = () => {
         </div>
       </div>
     </div>
+    <h2 v-if="winner" class="text-6xl font-bold mb-8">{{ winner }} a gagné !</h2>
   </main>
 </template>
 
