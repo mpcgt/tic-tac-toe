@@ -1,5 +1,6 @@
 <script setup>
 import { ref, computed } from "vue";
+import { inject } from "@vercel/analytics"
 
 const player = ref("X");
 const board = ref([
